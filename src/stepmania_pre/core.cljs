@@ -9,6 +9,6 @@
     ; 丸の描画
     (doto graphics
       (.drawCircle 200 200 100 initialstroke initialfill)
-      (.render graphics js/circlecanvas))))
+      (.render js/circlecanvas))))
 
 (set! (. js/window -onload) initcircle)
