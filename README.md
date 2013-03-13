@@ -1,6 +1,6 @@
 # stepmania-pre
 
-FIXME: write description
+stepmaniaのプレビューが出来るものになる予定のもの
 
 ## Usage
 
