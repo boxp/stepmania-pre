@@ -1,6 +1,8 @@
 (ns stepmania-pre.core 
   (:require [goog.graphics :as Graphics]
-            [goog.fx.dom :as fxdom]))
+            [goog.fx.dom :as Fxdom]
+            [goog.fx.easing :as Easing]
+            [goog.style :as Style]))
 
 ; 初期化＆丸を描画
 (defn init-circle [x,y,r]
@@ -11,18 +13,15 @@
     (doto graphics
       (.drawCircle x,y,r initialstroke initialfill)
       (.render js/circlecanvas))
-    (def start (array x y)
-    )))
+    (array x y)
+    ))
 
 ; 丸を動かす
-(defn slide-circle [x y anmtime] 
+(defn slide-circle [start x y anmtime] 
   (let [end (array x y)
-        slide (fxdom/Slide. js/circlecanvas,start,end,anmtime)]
-    (.play slide)))
+        slide (Fxdom/Slide. js/circlecanvas,start,end,anmtime)]
+    (. slide (play))))
 
-(defn testMove []
-  (do 
-    (init-circle 200 200 100)
-    (slide-circle 400 400 1000)))
+(defn testMove [] (slide-circle (init-circle 200 200 100) 400 400 1000))
 
 (set! (. js/window -onload) testMove)
